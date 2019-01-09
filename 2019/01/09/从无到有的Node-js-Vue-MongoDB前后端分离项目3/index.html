@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="行云博客，记录生活">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/site/云.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          从无到有的 Node+js+Vue+MongoDB 前后端分离项目(三) - Cloud | 行云
+        
+    </title>
+
+    <link rel="canonical" href="https://purewy.cn/2019/01/09/从无到有的Node-js-Vue-MongoDB前后端分离项目3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('code.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/undefined');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Site" title="Site">Site</a>
+                            
+                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                            
+                              <a class="tag" href="/tags/#Code" title="Code">Code</a>
+                            
+                        </div>
+                        <h1>从无到有的 Node+js+Vue+MongoDB 前后端分离项目(三)</h1>
+                        <h2 class="subheading">一个自制的旅游网站</h2>
+                        <span class="meta">
+                            Posted by 吴云 on
+                            2019-01-09
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">行云</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">原点</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/读万卷书.html">逆旅</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">行囊</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">烙印</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>到此为止，前端跟后端的框架已经大致搭建完成了，下一步就是进行前后端通信。其实主要做的工作就是后台写好接口，处理数据库的数据，前台调用接口，拿到数据，展示出来。没错就是这么简单，其实用Express框架写起接口来异常方便，这估计也是Express框架排行第一的原因，好用谁不用呢。</p>
+</blockquote>
+<blockquote>
+<p>接口其实很好写，我只拿一个简单的接口举例，我的项目中需要用到查询当前城市的酒店信息。那么我们就从这开始。</p>
+</blockquote>
+<blockquote>
+<p>不熟悉 Mongoose 的请看<a href="https://segmentfault.com/a/1190000012095054#articleHeader7" target="_blank" rel="noopener">这里</a>，mongoose.js 是用来连接mongodb 数据库并引用定义 Schema 和 Model，这样对于数据库处理起来会更方便。</p>
+</blockquote>
+<h1><span id="定义-schema-和-model">定义 Schema 和 Model</span></h1>
+<p>比如说要创建一个酒店的表，就需要这样定义Schema:<br>
+先引入 Mongoose</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const mongoose</span> = require(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="attribute">const Schema</span> = mongoose.Schema;</span><br></pre></td></tr></table></figure>
+<p>然后根据需要创建 Schema：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建houseSchema</span></span><br><span class="line">var houseSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line"><span class="symbol">    roomId:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>,<span class="string">required:</span> <span class="literal">true</span>&#125;,       <span class="comment">//房间表Id</span></span><br><span class="line"><span class="symbol">    commentId:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>,<span class="string">required:</span> <span class="literal">true</span>&#125;,    <span class="comment">//评论表Id</span></span><br><span class="line"><span class="symbol">    houseName:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                   <span class="comment">//酒店名称</span></span><br><span class="line"><span class="symbol">    houseStar:</span> &#123;<span class="string">type:</span> Number,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                   <span class="comment">//酒店星级</span></span><br><span class="line"><span class="symbol">    housePhone:</span> &#123;<span class="string">type:</span> Number,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                  <span class="comment">//酒店电话</span></span><br><span class="line"><span class="symbol">    houseTag:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                    <span class="comment">//酒店标签类型</span></span><br><span class="line"><span class="symbol">    houseGrade:</span> &#123;<span class="string">type:</span> Number,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                  <span class="comment">//酒店评分</span></span><br><span class="line"><span class="symbol">    houseCityPlace:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,              <span class="comment">//酒店所属市</span></span><br><span class="line"><span class="symbol">    houseAreaPlace:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,              <span class="comment">//酒店所属区</span></span><br><span class="line"><span class="symbol">    houseDetailPlace:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,            <span class="comment">//酒店详细位置</span></span><br><span class="line"><span class="symbol">    houseType:</span> &#123;<span class="string">type:</span> String,<span class="string">trim:</span> <span class="literal">true</span>&#125;,                   <span class="comment">//酒店住宿类型</span></span><br><span class="line"><span class="symbol">    houseFreeSer:</span> &#123;<span class="string">type:</span> Array,<span class="string">default:</span> []&#125;,                <span class="comment">//酒店提供服务种类</span></span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>字段太多就不一一列举，大概就是这么创建，很简单，需要注意的是MongoDB支持的数据类型，详情查看<a href="https://www.cnblogs.com/firstForEver/p/6843605.html" target="_blank" rel="noopener">这里</a></p>
+</blockquote>
+<p>然后就是建立 Model:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建model</span></span><br><span class="line"><span class="keyword">var</span> House = mongoose.model(<span class="string">'House'</span>,houseSchema);</span><br></pre></td></tr></table></figure>
+<p>然后别忘了导出：<br>
+<code>module.exports = House;</code></p>
+<p>完成到这里以后，你的数据库文档就已经完成了，可以试着向里面塞一条数据，然后打开你的数据库管理工具，我用的是 Navicat,他对 MongoDB 有很好的支持，创建数据就像这样：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">House.<span class="built_in">create</span>(&#123;houseName:<span class="string">"Shanghai"</span>,...各种字段&#125;,<span class="function"><span class="keyword">function</span><span class="params">(err,doc)</span></span>&#123;</span><br><span class="line">    //&#123; __v: <span class="number">0</span>, houseName:<span class="string">"Shanghai"</span>,...各种字段， _id: <span class="number">59720</span>d83ad8a953f5cd04664 &#125;</span><br><span class="line">    console.<span class="built_in">log</span>(doc); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果你没有设置id，它会帮你自动生成一个。doc 就是插入数据以后返回的House文档内容。<br>
+这样数据就插入成功了，更新，删除，修改等等就参照文档去做，大同小异。<br>
+接下来我们看看用Express如何写一个接口，以查询酒店为例。<br>
+先引入需要的东西：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入模型</span></span><br><span class="line"><span class="keyword">const</span> House = <span class="built_in">require</span>(<span class="string">'../../models/hotel/house'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后定义路由，写查询语句以及返回结果：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//整体查询酒店信息</span></span><br><span class="line">router.post(<span class="string">'/queryHotel'</span>, function(req, res, next) &#123;</span><br><span class="line">  House.find(req.body), (err, house) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      res.json(&#123;</span><br><span class="line">        <span class="selector-tag">code</span>: <span class="number">201</span>,</span><br><span class="line">        message: <span class="string">'数据库异常'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!house.length) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          <span class="selector-tag">code</span>: <span class="number">202</span>,</span><br><span class="line">          message: <span class="string">'该地区暂无酒店信息'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          <span class="selector-tag">code</span>: <span class="number">200</span>,</span><br><span class="line">          <span class="selector-tag">body</span>: house,</span><br><span class="line">          message: <span class="string">'酒店信息查询成功'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这就是根据前端传过来的查询条件去数据库查询符合条件的数据，查到结果以后，通过res.json返回给前端，处理格式按照自己的需要。<br>
+这时候这个接口就已经可以拿来使用了，我们在routes文件夹里面新建文件，index.js，然后引入刚才的接口文件：<br>
+<code>const hotel = require('./hotel/hotel.js')</code><br>
+然后通过路由去定义接口并使用接口：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routers = <span class="function"><span class="keyword">function</span> <span class="params">(app)</span> </span>&#123;</span><br><span class="line">    app.<span class="keyword">use</span>(<span class="string">'/hotel'</span>,hotel);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定制404页面</span></span><br><span class="line">    app.<span class="keyword">use</span>(<span class="function"><span class="keyword">function</span><span class="params">(req,res)</span></span>&#123;</span><br><span class="line">        res.status(<span class="number">404</span>);</span><br><span class="line">        res.render(<span class="string">'404'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定制500页面</span></span><br><span class="line">    app.<span class="keyword">use</span>(<span class="function"><span class="keyword">function</span><span class="params">(err,req,res,next)</span></span>&#123;</span><br><span class="line">        console.log(<span class="string">'err.stack'</span>);</span><br><span class="line">        res.status(<span class="number">500</span>);</span><br><span class="line">        res.send(<span class="string">'500'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = routers;</span><br></pre></td></tr></table></figure>
+<p>这样定义以后，导出routers模块，在入口的index.js中应用一下就行了，具体代码参照前面的内容。这样一个酒店查询接口就完成了。你可以在postman测一下这个接口，如果正常返回数据就没有问题了，其他的接口也是这样写，就不一一说明了。</p>
+<h1><span id="与后端通信">与后端通信</span></h1>
+<p>后端接口准备就绪以后，我们就可以拿来使用了。<br>
+在前面的request.js 文件中，我们已经封装过请求了，这时候我们就拿来使用就可以了。创建一个api文件夹，然后创建文件hotel.js文件，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//查询酒店</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queryHotel</span>(<span class="params">data</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> request(&#123;</span><br><span class="line">        url: <span class="string">'/hotel/queryHotel'</span>,</span><br><span class="line">        method: <span class="string">'post'</span>,</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(data)</span><br><span class="line">      &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>然后在你的前端页面引入这个文件：<br>
+<code>import {queryHotel} from '../../../api/hotel/index.js'</code><br>
+然后使用它：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">queryHotel</span><span class="params">(&#123;houseCityPlace: this.queryCity&#125;)</span></span>.then(res =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(res<span class="selector-class">.data</span><span class="selector-class">.code</span> == <span class="number">200</span>)&#123;</span><br><span class="line">        this<span class="selector-class">.houseInfo</span> = res<span class="selector-class">.data</span><span class="selector-class">.body</span></span><br><span class="line">        console.log(this.houseInfo)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;).catch(() =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>没错就是这样简单，接口就对接完成了，拿到的 res.data.body 就是之前在后台定义的。<br>
+到此我们前后端的通信就已经完成了，剩下的就需要自己在项目中多学多敲了。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/01/09/搭建React-Native项目并完美运行在虚拟机上/" data-toggle="tooltip" data-placement="top" title="搭建React-Native项目并完美运行在虚拟机上">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/01/08/我的2018/" data-toggle="tooltip" data-placement="top" title="我的2018">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">定义 Schema 和 Model</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">与后端通信</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://njzyblog.cn" target="_blank">宁静致远</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://purewy.cn/2019/01/09/从无到有的Node-js-Vue-MongoDB前后端分离项目3/";
+    var disqus_url = "https://purewy.cn/2019/01/09/从无到有的Node-js-Vue-MongoDB前后端分离项目3/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+-    <!-- Footer -->
+-    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/PureWY">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 吴云 2019 
+                </p>
+                <p class="copyright text-muted">
+                    A blog site that records personal life
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://purewy.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://purewy.cn/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

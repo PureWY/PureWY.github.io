@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="行云博客，记录生活">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/site/云.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          从无到有的 Node.js+Vue.js+MongoDB 前后端分离项目(一) - Cloud | 行云
+        
+    </title>
+
+    <link rel="canonical" href="https://purewy.cn/2018/11/02/从无到有的Node-js-Vue-MongoDB前后端分离项目/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('code.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/undefined');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Site" title="Site">Site</a>
+                            
+                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                            
+                              <a class="tag" href="/tags/#Code" title="Code">Code</a>
+                            
+                        </div>
+                        <h1>从无到有的 Node.js+Vue.js+MongoDB 前后端分离项目(一)</h1>
+                        <h2 class="subheading">一个自制的旅游网站</h2>
+                        <span class="meta">
+                            Posted by 吴云 on
+                            2018-11-02
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">行云</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">原点</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/读万卷书.html">逆旅</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">行囊</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">烙印</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>在学完 Node.js 与 Express 之后，手写了一个以 Node 为后台，并利用 Handlebars 引擎进行前台渲染的小项目。其实并没有完整的做完，只是大致了解一下  Node，以及如何写后台接口。因为临近毕业，需要一个完整的项目用于毕业设计，所以准备重新搭建一个以 Vue+Node 的前后端分离的完整项目，数据库用的是与    Node搭档效果不错的 MongoDB。本项目是一个旅游网站，我将尽可能仔细的介绍整个搭建过程，那就跟着我一步步走吧。</p>
+</blockquote>
+<h1><span id="搭建后台">搭建后台</span></h1>
+<hr>
+<blockquote>
+<p>本项目使用 Git 作为代码管理工具，不熟悉 Git 操作的请移步<a href="https://juejin.im/post/5ae072906fb9a07a9e4ce596" target="_blank" rel="noopener">这里</a></p>
+</blockquote>
+<p>先进入个人的 GitHub,创建个人项目仓库。然后 git clone 到本地。(可自行创建 dev 分支)<br>
+进入项目目录，新建两个文件夹 client、server。顾名思义，client 为前台文件，server 为后台文件。</p>
+<blockquote>
+<p>安装 Node.js,安装步骤请移步<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">这里</a>.</p>
+</blockquote>
+<p>进入文件夹 server，执行命令 npm init，按照 cmd 的提示一步步走，至于项目名称等随意。这样第一小步已经完成了，接下来便是安装本项目有关的依赖。如下：<br>
+<img src="https://purewy.github.io/img/Vue+Node/dependencies.png" alt="项目依赖"></p>
+<ul>
+<li>bcrypt:  用于加密密码</li>
+<li>body-parser: 用于解析 URL</li>
+<li>cookie-parser: 用于解析 cookie</li>
+<li>cors: 用于处理跨域请求</li>
+<li>dotenv: 用于 env 配置</li>
+<li>express: 框架</li>
+<li>express-session: 用于 session 设置</li>
+<li>jsonwebtoken: 用于后端生成 token</li>
+<li>mongoose: 数据库</li>
+<li>nodemon: 用于自动化部署<br>
+<em>未作解释的可不装</em></li>
+</ul>
+<p>相关依赖装好以后，开始创建真正的项目，项目目录如下(酌情参考)：<br>
+<img src="https://purewy.github.io/img/Vue+Node/mulu.png" alt="项目目录"></p>
+<ul>
+<li>config: 用于项目的整体配置</li>
+<li>models: 数据库 MongoDB 的模型及 Schema</li>
+<li>node_modules: 详细依赖</li>
+<li>routes: 路由</li>
+<li>.gitignore: 上传 git 的忽略文件，例如 node_modules</li>
+<li>index.js: 入口文件</li>
+<li>nodemon.js 自动化配置</li>
+<li>package-lock.json: 自动生成</li>
+<li>package.json: 依赖目录，项目信息</li>
+<li><a href="http://READEME.md" target="_blank" rel="noopener">READEME.md</a>: 项目介绍<br>
+<em>目录很简洁</em></li>
+</ul>
+<blockquote>
+<p>接下来进入 index.js,不熟悉 Node.js 的请移步<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434501245426ad4b91f2b880464ba876a8e3043fc8ef000" target="_blank" rel="noopener">这里</a>.</p>
+</blockquote>
+<p>引入各项所需文件:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var express</span> = require(<span class="string">'express'</span>);</span><br><span class="line"><span class="attribute">var session</span> = require(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="attribute">var mongoose</span> = require(<span class="string">'./config/mongoose.js'</span>);</span><br><span class="line"><span class="attribute">var bodyParser</span> = require(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="attribute">var cors</span> = require(<span class="string">'cors'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后使用 express:<br>
+<code>var app = express();</code></p>
+<p>解决跨域:<br>
+<code>app.use(cors());</code><br>
+(使用cors是最方便的使用中间件解决跨域的办法)</p>
+<p>设置项目启动端口:<br>
+<code>app.set('port',process.env.PORT || 3333);</code></p>
+<p>设置URl解析:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">app</span><span class="selector-class">.use</span>(<span class="selector-tag">bodyParser</span><span class="selector-class">.json</span>());</span><br><span class="line"><span class="selector-tag">app</span><span class="selector-class">.use</span>(<span class="selector-tag">bodyParser</span><span class="selector-class">.urlencoded</span>(&#123;</span><br><span class="line">  <span class="attribute">extended</span>: true</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>如果使用 session 验证便按如下配置:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">app</span><span class="selector-class">.use</span>(session(&#123;</span><br><span class="line">    <span class="attribute">secret</span>: <span class="string">'cookieSecret'</span>, <span class="comment">//作为服务器端生成session的签名</span></span><br><span class="line">    <span class="attribute">resave</span>: true,           <span class="comment">//是否允许当客户端并行发送多个请求时，其中一个请求在另一个请求结束时对session进行修改覆并保存</span></span><br><span class="line">    <span class="attribute">saveUninitialized</span>: false, <span class="comment">//初始化session时是否保存到存储</span></span><br><span class="line">    <span class="attribute">cookie</span>: &#123;</span><br><span class="line">        <span class="attribute">maxAge</span>: <span class="number">1000</span> * <span class="number">60</span> * <span class="number">5</span>  <span class="comment">//设置session的有效时间，单位毫秒</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>最后开启监听端口:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Express started on http://localhost:'</span> +</span><br><span class="line">	app.get(<span class="string">'port'</span>) + <span class="string">'; press Ctrl-c to terminate.'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>此时运行 node index.js 应该控制台会显示:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Express</span> started <span class="literal">on</span> http://localhost:3333; <span class="attribute">press</span> Ctrl-c to terminate.</span><br><span class="line">MongoDB连接成功!</span><br></pre></td></tr></table></figure>
+<p>说明运行成功，配置无误。</p>
+<p>但是每次都需要运行 node xxx.js 未免太过麻烦，nodemon 的作用此刻就可以显示出来了。nodemon 用来监视node.js应用程序中的任何更改并自动重启服务,非常适合用在开发环境中。nodemon 将监视启动目录中的文件，如果有任何文件更改，nodemon 将自动重新启动node应用程序。nodemon 不需要对代码或开发方式进行任何更改。 nodemon 只是简单的包装你的 node 应用程序，并监控任何已经改变的文件。nodemon 只是node的替换包，只是在运行脚本时将其替换命令行上的node。</p>
+<p>下面进行 nodemon 的相关配置，没错，就是之前创建的 nodemon.json.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"restartable"</span>: <span class="string">"rs"</span>,</span><br><span class="line">    <span class="attr">"ignore"</span>: [</span><br><span class="line">        <span class="string">".git"</span>,</span><br><span class="line">        <span class="string">".svn"</span>,</span><br><span class="line">        <span class="string">"node_modules/**/node_modules"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"verbose"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"execMap"</span>: &#123;</span><br><span class="line">        <span class="attr">"js"</span>: <span class="string">"node --harmony"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"watch"</span>: [</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"env"</span>: &#123;</span><br><span class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"development"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"ext"</span>: <span class="string">"js json"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>restartable: 设置重启模式</li>
+<li>ignore: 设置忽略文件</li>
+<li>verbose: 设置日志输出模式，true 详细模式</li>
+<li>execMap: 设置运行服务的后缀名与对应的命令,表示使用 nodemon 代替 node</li>
+<li>watch: 监听哪些文件的变化，当变化的时候自动重启</li>
+<li>ext: 监控指定的后缀文件名<br>
+<em>如果你的入口文件为 index.js，只需在命令行执行 nodemon 即可</em></li>
+</ul>
+<p>如上，Ctrl+C 关闭之前执行进程，执行 nodemon，会发现项目成功运行，并且之后的每一次修改保存以后都会自动监听执行。到此基本的后台搭建已经完成，继而进行数据库的连接配置。</p>
+<blockquote>
+<p>到此可以提交一下代码啦，先行配置 .gitignore 文件，防止将不需要的文件提交上去。在文件中输入以下代码即可忽略掉该文件。</p>
+</blockquote>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node_modules/</span><br><span class="line"><span class="regexp">/dist/</span></span><br></pre></td></tr></table></figure>
+<h1><span id="连线数据库">连线数据库</span></h1>
+<blockquote>
+<p>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。<br>
+MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。<br>
+关于其他数据库的选择与介绍，请移步<a href="https://blog.csdn.net/xingxuexx/article/details/64122687" target="_blank" rel="noopener">这里</a>.</p>
+</blockquote>
+<p>接下来先进行数据库的基本连接配置。<br>
+打开 config 文件夹，新建 config.js。配置数据库连接如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">    mongodb: <span class="string">'mongodb://localhost:27017/index'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在此目录下新建文件 mongoose.js，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'./config'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    mongoose.connect(config.mongodb);   <span class="comment">//连接数据库</span></span><br><span class="line">    <span class="comment">//实例化连接对象</span></span><br><span class="line">    <span class="keyword">var</span> db = mongoose.connection;</span><br><span class="line">    db.on(<span class="string">'error'</span>,<span class="built_in">console</span>.error.bind(<span class="built_in">console</span>,<span class="string">'连接错误:'</span>));</span><br><span class="line">    db.once(<span class="string">'open'</span>,<span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'MongoDB连接成功!'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> db;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时打开 cmd，输入 mongod，便可运行数据库。若无异常控制台便会显示：</p>
+<p><code>waiting for connections on port 27017</code></p>
+<p>此时数据库已成功连接。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/12/15/从无到有的Node-js-Vue-MongoDB前后端分离项目2/" data-toggle="tooltip" data-placement="top" title="从无到有的 Node.js+Vue.js+MongoDB 前后端分离项目(二)">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/05/10/舟山游记/" data-toggle="tooltip" data-placement="top" title="[杭州、舟山] 我们的夏天">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">搭建后台</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">连线数据库</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://njzyblog.cn" target="_blank">宁静致远</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://purewy.cn/2018/11/02/从无到有的Node-js-Vue-MongoDB前后端分离项目/";
+    var disqus_url = "https://purewy.cn/2018/11/02/从无到有的Node-js-Vue-MongoDB前后端分离项目/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+-    <!-- Footer -->
+-    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/PureWY">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 吴云 2019 
+                </p>
+                <p class="copyright text-muted">
+                    A blog site that records personal life
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://purewy.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://purewy.cn/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

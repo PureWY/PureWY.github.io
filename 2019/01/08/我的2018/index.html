@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="行云博客，记录生活">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/site/云.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          我的2018 - Cloud | 行云
+        
+    </title>
+
+    <link rel="canonical" href="https://purewy.cn/2019/01/08/我的2018/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('life.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/undefined');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                            
+                              <a class="tag" href="/tags/#Life" title="Life">Life</a>
+                            
+                        </div>
+                        <h1>我的2018</h1>
+                        <h2 class="subheading">感谢经历，让我成长</h2>
+                        <span class="meta">
+                            Posted by 吴云 on
+                            2019-01-08
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">行云</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">原点</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/读万卷书.html">逆旅</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">行囊</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">烙印</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>2018年刚刚过去的时候，我并没有什么感觉，那天我睡的很早，仿佛一切仪式感与我都没什么关系。也不知道从什么时候开始我对周遭的一切都变得陌生起来。其实我不是一个举着孤独至上大旗的人，我只是提不起劲去热闹。但我还是想对自己的2018说些什么，中肯的评价我或许给不出来，人生总是这样，有收获，有失去。未来的2019，我想应该是我最后一个勉强轻松的一年，最后一个学生时代的一年，最后一个充满希望的一年。</p>
+</blockquote>
+<h1><span id="忐忑的开始">忐忑的开始</span></h1>
+<blockquote>
+<p>这是一个团队的力量</p>
+</blockquote>
+<p>从2018的最开始说起，用忐忑来形容最合适不过。那时忙于做学期项目设计，我们做的是一个天气App，其中融合了很多功能，像天气预报，商城，天气预警，地图，留言等等。我们五个人一直为这个项目努力着，从早上八点到晚上八点，大部分时间都在教室里。除了紧张的项目进程之外，吃过晚饭，我们时常会聚在一起玩游戏。杨浩是荒野行动的一把好手，但微信跳一跳没有人比得过我，我时常帮刘洋拿到好友榜排名第一的分数。那段时光是我一直难以忘怀的，因为我感觉到一个团队的凝聚力，他坚不可摧。我中午一般不怎么回去，我中午在床上是睡不着的，所以我一整天都在教室待着。所幸也是那段时间，深入学习了js，为我后面在汉得的面试顺利通过打下了基础。也是那时候第一次跟戚哥混个脸熟，我怎么也不会想到他会是我后来一起实习九个月的人。</p>
+<p><img src="https://purewy.github.io/img/2018/201801.jpg" alt="雨后的校园"></p>
+<h1><span id="好的结果">好的结果</span></h1>
+<blockquote>
+<p>还好还算幸运</p>
+</blockquote>
+<p>如果我没记错的话，我们是一月二十号参加的校招。说来也巧，我一开始并不知道汉得的面试，只是去百得面试的途中，碰到杨浩他们往西三跑去，我就跟着去了。先是参加了笔试，大部分都是js的内容，幸好我之前学过一段时间，答的还算凑合。后面对于ES6的语法我还未了解过，其实我当时根本就不知道什么叫ES6，后来我才知道我的无知，以及在学校学习的深度实在是太浅了。在我笔试结束以后就去参加了百得的面试，我感觉我答的并不好，面试中途我的手机响了，我大概猜到是汉得那边打电话过来了。等我潦草答完百得这边以后，我心里觉得肯定是应聘不上了，就去参加了汉得的面试，面我的人就是刚哥，后来我才知道他就是汉得的前端组组长。面试过程中我们聊得很投缘，在问过我一些基础的前端知识以后，侃起了我的项目，我对我们的项目比较了解，也做了很多东西，他最后算是比较满意。然后跟我说这边会招我进去，叫我回去等通知。我虽然内心欣喜若狂，表面仍然波澜不惊。我出去以后就去寻找组织，大部分都去了百得，他们叫我别犹豫直接去汉得，我还是打了电话问了老爸的意见，他说按我自己想的做。他一贯来就是这样，尊重我的选择，时而凭借他的阅历给我劝导，让我少走弯路。后来的结果就是按我想的那样，很顺利的拿到了汉得的offer，很安心的过了个年。</p>
+<p><img src="https://purewy.github.io/img/2018/201803.jpg" alt="公司的花"></p>
+<h1><span id="兴致勃勃">兴致勃勃</span></h1>
+<blockquote>
+<p>开头总是难的</p>
+</blockquote>
+<p>3月5号，我没记错的话。我，戚静远，胡成强三个人在上海虹桥火车站相遇了。那是我第一次见到强哥，他理个平头，蓄了一点胡须，看上去不苟言笑的样子。他是我们的学长，他之前已经在百得实习了八个月，后来跟我们一起参加的汉得的校招。看到他我就主动的上去打招呼，并表示以后还要多多关照。戚哥在学期项目的时候就跟我一个班了，后来我问他为什么选择前端，他跟我说，他从大二开始敲代码，所以从那时候就有了这方面的兴趣，至于为什么不搞java，他说那种强类型的语言他不喜欢，他本来就是个很随性的人。我与他实习住在一起九个多月，一起上班下班，要说2018年最大的收获，不是这份工作，也不是赚的的薪水，而是交了这样一个朋友。君子之交淡如水，我不用兄弟这样的词去称谓，因为不知何时这个词已变得异常廉价。话不多说，我们坐了17号线去汉得，先是去宿舍报道，办理入住以后就去了公司。那时候我才发现工作并不轻松。刚把所需要的环境搭好，我就不得不收起惴惴不安的心，看起了代码。这是一个上汽集团的后台管理项目，前端用Vue搭建，后台在南京。‘这前后端分离的有些过分了’，我跟戚哥打趣说。我从未如此真实的感受到项目的概念，我一直感觉到压力，后来才知道，那是面对无知的压力，等你有了知识积累以后，那种压力叫自信。刚哥就有这样的自信，他做前端不长，才两三年，但是在我眼里他已经很厉害了，我也从他的身上看到，他对代码的热爱，他不屑于管理杂碎的事，他喜欢敲代码，思考问题，解决问题。这是我看得到的闪光的地方，也是感谢这样的人一开始就出现在了我的职业生涯中，让我努力的学习着这份姿态。大概看了半个月的代码，我们就陆续的上了项目，一开始做是很怕出错的，一旦微信群里有人反映问题就会害怕是不是自己的bug。是时间跟不断的积累，慢慢的走上道了，但我觉得自己仍然还是无知，直到此刻还是这样。</p>
+<p><img src="https://purewy.github.io/img/2018/201804.jpg" alt="上海外滩"></p>
+<h1><span id="去南京">去南京</span></h1>
+<blockquote>
+<p>这是一段充满各种滋味的时光</p>
+</blockquote>
+<p>我们在上海除了工作以外，还感受到了无拘无束。我们去正大广场看了LOL现场的比赛，我们去东方明珠塔下合了影，我们去龙虾店吃了八九斤的龙虾。很多琐碎的事我不是全然记得，但我知道那段时光是快乐的。听到要去南京现场开发的时候，我们都是抗拒的，我们在上海什么都好，鬼知道南京是什么样子。可是由不得我们。五月中旬，我们就去了南京。南京是个好地方，我啪啪的打自己的脸。我们住的是小区，舒适自由，这里下班时间固定，基本不加班，这里的同事很多都是汉得过来的，对我们都很照顾。我是有点乐不思蜀了，我希望一直在这呆着。后来的有一天，我还是打了自己的脸。我跟戚哥就一直在南京开发项目，跟他后面也学习了很多别的东西，我们的感情也日渐深厚。其实要说好好的讲一讲南京的事，我都不敢下笔，因为太多了。我在这里一直待到了12月份才离开，中间发生了很多很多的事，我不知道从哪里开始讲好。但是我会一直记得这些人，吉哥，明哥，佳佳姐，华姐，林哥，鹏哥，梁加驰，还有我最好的室友，洋哥。他们教给了我很多，就在昨天我才刚从南京回来，缘分真的是个很奇妙的东西。</p>
+<p><img src="https://purewy.github.io/img/2018/201805.jpg" alt="南汽"></p>
+<h1><span id="说一说吉哥">说一说吉哥</span></h1>
+<blockquote>
+<p>很少见的喜欢看书的人</p>
+</blockquote>
+<p>一个少见的喜欢看书的人，我欣于这么评价他。我的周围，喜欢看书的不多，因为看书能聊到一起去的估计就吉哥一个。网络化的时代大部分人都被碎片化的信息充斥了思想，我不敢说自己多么清高与自好，我确实是从书中获得过切实的快乐。前几天也入手了一部Kindle，作为自己辛苦一年的礼物。我看书更多的原因是不希望自己无知，从而谨言慎行。我喜欢看历史，推理，有意义的小说。吉哥是影响我很深的人。他的记性很好，看过的书，不怎么忘记，与他交谈我时常相形见绌。他偶尔与我辩论，他不会一味的否决你的思想，而是等你发表完观点以后，再去指出你的疏忽，静静聆听一个人说话本就是高尚的品格。然而这已经很稀有了。他与我一样，喜欢历史，我时常感慨他读书之多。他也常与我说些人生的苦楚，岁月教给他的，我并不全然懂，我知道年龄不够，时候未到。一个人若能与你推心置腹，这本来不易，而能一直尊重你的观点你的决定，绝不因自己的经验去干扰你的判断，这实在是难得了。他常说是不敢担责，我却觉得这就是稀有的品格。任何决定终究是要靠自己做的，好也好，坏也罢，都是好的安排，如孔子所说，‘尽人事，听天命’。我常记得游褒禅山记的那一段：</p>
+<blockquote>
+<p>‘于是余有叹焉。古人之观于天地、山川、草木、虫鱼、鸟兽，往往有得，以其求思之深而无不在也。夫夷以近，则游者众；险以远，则至者少。而世之奇伟、瑰怪，非常之观，常在于险远，而人之所罕至焉，故非有志者不能至也。有志矣，不随以止也，然力不足者，亦不能至也。有志与力，而又不随以怠，至于幽暗昏惑而无物以相之，亦不能至也。然力足以至焉，于人为可讥，而在己为有悔；尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？此余之所得也。’</p>
+</blockquote>
+<p>恕我不才，难以直抒胸臆，但我想说的，书里都已写明。希望未来的我们都能尽吾志，不失本心。共勉。</p>
+<p><img src="https://purewy.github.io/img/2018/201806.jpg" alt="常州"></p>
+<h1><span id="过去和未来">过去和未来</span></h1>
+<blockquote>
+<p>我还在路上</p>
+</blockquote>
+<p>2018年就这样过去了，猝不及防。<br>
+相比于前面三年的大学时光，这将近一年的实习教会我的比那些多得多。其实后悔并没有用，但是后悔能证明你懂了，有些事做错了。但是我不再计较了，对于我浪费的那些日子。这一年主要还是学习Vue吧，在年末的几个月跟戚哥后面搞了搞Node.js跟 MongoDB，在常州学了React。我觉得自己学的不够深，可能是时间不够吧，我应该更沉淀一点。除了南汽的项目以外还做了自己的毕业设计，认认真真的做了一个旅游网站，还有一些模块没有完成。<br>
+我不知道我应该对2018说些什么，感谢吧，更多的应该是这个。感谢运气，感谢所有的安排。<br>
+2019，让自己走的更远。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/01/09/从无到有的Node-js-Vue-MongoDB前后端分离项目3/" data-toggle="tooltip" data-placement="top" title="从无到有的 Node+js+Vue+MongoDB 前后端分离项目(三)">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/12/15/从无到有的Node-js-Vue-MongoDB前后端分离项目2/" data-toggle="tooltip" data-placement="top" title="从无到有的 Node.js+Vue.js+MongoDB 前后端分离项目(二)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">忐忑的开始</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">好的结果</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">兴致勃勃</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">去南京</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">说一说吉哥</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">过去和未来</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://njzyblog.cn" target="_blank">宁静致远</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://purewy.cn/2019/01/08/我的2018/";
+    var disqus_url = "https://purewy.cn/2019/01/08/我的2018/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+-    <!-- Footer -->
+-    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/PureWY">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 吴云 2019 
+                </p>
+                <p class="copyright text-muted">
+                    A blog site that records personal life
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://purewy.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://purewy.cn/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

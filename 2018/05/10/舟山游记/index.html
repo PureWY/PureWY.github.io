@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="行云博客，记录生活">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/site/云.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          [杭州、舟山] 我们的夏天 - Cloud | 行云
+        
+    </title>
+
+    <link rel="canonical" href="https://purewy.cn/2018/05/10/舟山游记/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('life.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/undefined');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                            
+                              <a class="tag" href="/tags/#Tourism" title="Tourism">Tourism</a>
+                            
+                        </div>
+                        <h1>[杭州、舟山] 我们的夏天</h1>
+                        <h2 class="subheading">我们也曾试图抓住青春的尾巴</h2>
+                        <span class="meta">
+                            Posted by 吴云 on
+                            2018-05-10
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">行云</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">原点</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/读万卷书.html">逆旅</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">行囊</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">烙印</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>我曾读过一本书，是毕淑敏写的。读过以后我便喜欢去陌生的地方走走停停，恰好还有两个人愿意和我一起，我想也写一写我们的故事，我们的风景。<br>
+趁阳光正好，趁微风不噪。趁繁花还未开至荼蘼，趁现在还年轻。还可以走很长很长的路，还能诉说很深很深的思念。去寻找那些曾出现在梦境中的路径、山峦与田野吧。<br>
+——毕淑敏 《人生终要有一场触及灵魂的旅行》</p>
+</blockquote>
+<h1><span id="计划">计划</span></h1>
+<hr>
+<p>最早萌生出去舟山这个想法的，依旧是我。有一天上课，我突然问，你们看过海吗？他们都说没有，我说那我们去看海吧，小强自然是爽快的答应下来，我喜欢与他交往，其一就是因为为人爽快直白。孙狗比倒是犹豫了一会，问我什么时候去，我心里明白他最终也会去的。我便着手计划起来。</p>
+<h1><span id="定时">定时</span></h1>
+<hr>
+<p>那一定是暑假当中最酷热的时候，我们也是头脑发了昏什么的。当然最大责任在我，选了一个并不算十分恰当的点去。但他们却很兴致勃勃。约定好时间，是七月二十号，我买了下午四点半的车票，五点半到了芜湖站。小强已经在那等我，他穿着橘黄色的T恤，黑色的休闲裤，看上去有些瘦了。也许与他每日跑步有关，坚持总是一件很难得事，很庆幸他做到了。与他碰面后我们就去等孙狗比，见孙狗比的情形我现在却已不大记得了。我已经很努力的去怀想了，出高铁站之后的记忆就很模糊了。总之这便是碰面的情景了。</p>
+<h1><span id="等待">等待</span></h1>
+<hr>
+<p>去宁波的火车票是晚上一点三十二的。我们先是去了大润发超市，买了很多路上吃的东西，而后便去了网吧。等到十二点我们开始向火车站出发。我们到处找单车，最终是在一个小区里找到了三辆，便慢悠悠的骑着。深夜的芜湖街道十分寂静，我们边骑着边互相开着玩笑，是那种无比肆意又无比美好的玩笑。那段路程我至今记忆犹新，我想再走一次，我知道无法再走一次。到了车站以后，偌大的车站只有少许疲惫的赶路人。我们却很有兴致，我们不知道夜又多么漫长，或许是因为我们肩上没有背负赶路的包袱。我想我们终会背上的。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E7%81%AB%E8%BD%A6%E7%AB%99.jpeg" alt="凌晨的火车站"></p>
+<h1><span id="出发">出发</span></h1>
+<hr>
+<p>绿皮火车晃晃荡荡，窗外也是一片漆黑，连路灯都很难看见，只有一些稀稀疏疏的光点。我们没有选到靠窗的座位，所以也很难扒着去睡。车厢渐渐安静，倦意也很快袭来，孙狗比坐在我左边，小强在我对面，我便扒在他腿上，他伏在我背上，勉强睡着。我是不想再坐绿皮火车了，车速很慢，环境很差。但如果有他们一起，我什么不情愿都没有了。五点多的时候我们就慢慢醒来了，夏天的杭州天已经亮了。车厢里人走掉了很多，我们得以靠着窗了。这第一缕阳光就能觉得有些热了。我们吃着面包，喝着饮料，饥肠辘辘的我们突然觉得舟车劳顿。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E7%81%AB%E8%BD%A6%E4%B8%8A.jpeg" alt="疲惫的车厢"></p>
+<h1><span id="到达">到达</span></h1>
+<hr>
+<p>七点二十八，我们终于到了宁波。<br>
+看似新鲜的旅程，在疲惫中开始了。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E5%AE%81%E6%B3%A2%E7%AB%99.jpeg" alt="宁波火车站"></p>
+<h1><span id="身心俱疲">身心俱疲</span></h1>
+<hr>
+<p>我们先是去往预定的酒店。骑单车大概三十分钟，先是在公路上行驶，然后穿过大街小巷，清早的宁波集市上无比拥挤热闹。很多老人带着孙子孙女买菜，鱼是最多的，各种品类的鱼我辨认不出，只是觉得热闹。很艰难的到达了酒店，办理了入住，便扑倒在大床上。酒店环境还是很好的，以至于一下午的时间我们都在床上度过了。或许是太累了，洗完澡以后便都睡着了，第一天的旅途就这样充满意外。到了四点多我们才醒过来，便觉得时间很宝贵，我们得出去玩玩了。在地图上选了很久，最后决定去不远的月湖公园。事实证明我们的选择是错误的。经过二十分钟的骑行，我们来到了一片枯水湖，湖里已经被垃圾充满，没有什么水的湖底让我们一眼窥透。我们大失所望，抱怨着逛了一圈，便准备回去了。我是不甘心就这样回去的，在路上看见了新华书店，我便起了文艺青年的瘾。硬拉着他们进去，确实是没看几个字的。就乘地铁回到了酒店旁边。折腾一圈，有些饿了，三个人谁都不愿意再去寻吃的。“那就去前面的超市买零食吧”。不知谁提的这个建议得到了一致认同。最终一人买了一桶面，一些零食，回到了酒店。孙狗比去宁波吃海鲜的梗也由此而来，现在想着着实搞笑。</p>
+<h1><span id="旅行的意义">旅行的意义</span></h1>
+<hr>
+<p>晚上我们计划了很久，想着第二天一定要好好利用起来。最后采纳了小强的意见，去舟山的朱家尖，那里有一个东沙海滩，去看海。我们先是从宁波汽车站坐大巴去到舟山，然后再从舟山转公交前往朱家尖。光是坐车我们就花了半天的时间。到了朱家尖都已经正午了。下了车才知道离海滩还有几公里的路程。那里还是很荒凉的，并没有什么车，也很少有人，与我们的期望有些出入。那时候太阳正盛，我们不得不拿出防晒霜涂在身上。在快到海边的时候我们帮小强买了一个游泳圈，我和孙狗比都会游一点泳，而小强完全就是旱鸭子。检票进场以后，我们穿着泳裤下了海。海水真咸。我是不想尝的，可是海浪一过来总会碰到嘴唇。像是一碗水里放了十勺盐一样。我拿着小强的游泳圈，飘在海面上，看着特别湛蓝的天空，微微的海风吹过，只那一刻，我感觉到了旅途的快乐，也只那一刻，所有的疲惫，好像都掺了点海水，变得有点味道。在海滩玩到下午四点，我们知道该回去了，海水泡的手指也泛白了。我们便按原来的路径到了舟山。我们不准备在宁波再呆一天了，就买了去杭州的车票，六点钟出发去杭州。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E6%B5%B7%E6%BB%A9.jpeg" alt="海滩"></p>
+<h1><span id="看西湖">看西湖</span></h1>
+<hr>
+<p>到杭州已经九点多了。大巴慢慢的驶入一条胡同里，四下无人。我们下了车便骑车去预定的酒店。路上车还很多，我们找了很久才到。肚子有些饿了，我们在楼下随便吃点东西，便上床睡了。第二天八点多我们就出发去往西湖。其实也没有想象中的那般惊艳，或许是少了点江南的烟雨。没有朦胧的美，只有骄阳的燥热。我们大概游了一圈，也是有点好看的景的。特别留恋的是那一塘荷花，她不在西湖里，只是旁边的一个小池塘，安静的在那开着，却比西湖中央更吸引人。我们骑了很久的车，幸好有一间免费的茶铺，我们大饮了三杯，。小强笑着说这第二条命是茶铺给的。我和孙狗比也愈发苟同了。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E8%A5%BF%E6%B9%96%E8%BE%B9.jpeg" alt="西湖边"></p>
+<h1><span id="一半欣喜一半失落">一半欣喜，一半失落</span></h1>
+<hr>
+<p>三个人不言而喻，这旅途并没有想象的那么好。<br>
+更多的是疲惫与奔波，以及炎热，大大得冲散了我们对景色的欣赏热情。我们决定返程了。<br>
+当时已经是下午两点多，我们从杭州站出发，小强直接去到合肥。回去的路上谁都没有多说话，或许是太累了吧，就连我跟孙狗比偷吃了小强的东西他都没有发觉。</p>
+<h1><span id="何时再启程">何时再启程</span></h1>
+<hr>
+<p>现在码字才发现都快一年了。今年的我们三个早已不在一起。所幸他们两个狗比还在一起工作，这是幸运的事。诚然，人生总有聚散分离，我并不为此惋惜。相信每一次分离是为了更好地相遇。旅程最好看的或许不是风景，而是彼此最坦诚的心；也许最好听的不是外滩酒吧的歌曲，而是一同乘坐列车的汽笛。你，我，他，这三个代名词，恰好就是我们三最结实的友谊。记得在西湖的苏堤上，我许了一个愿景。</p>
+<p>愿我们前程似锦，不忘初心。</p>
+<hr>
+<p><img src="https://purewy.github.io/img/summer/%E5%86%8D%E5%90%AF%E7%A8%8B.jpg" alt="再启程"></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/11/02/从无到有的Node-js-Vue-MongoDB前后端分离项目/" data-toggle="tooltip" data-placement="top" title="从无到有的 Node.js+Vue.js+MongoDB 前后端分离项目(一)">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">计划</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">定时</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">等待</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">出发</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">到达</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">身心俱疲</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">旅行的意义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">看西湖</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">一半欣喜，一半失落</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">何时再启程</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://njzyblog.cn" target="_blank">宁静致远</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://purewy.cn/2018/05/10/舟山游记/";
+    var disqus_url = "https://purewy.cn/2018/05/10/舟山游记/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+-    <!-- Footer -->
+-    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/PureWY">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 吴云 2019 
+                </p>
+                <p class="copyright text-muted">
+                    A blog site that records personal life
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://purewy.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://purewy.cn/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

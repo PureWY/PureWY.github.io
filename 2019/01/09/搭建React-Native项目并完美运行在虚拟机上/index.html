@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="行云博客，记录生活">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/site/云.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          搭建React-Native项目并完美运行在虚拟机上 - Cloud | 行云
+        
+    </title>
+
+    <link rel="canonical" href="https://purewy.cn/2019/01/09/搭建React-Native项目并完美运行在虚拟机上/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('code.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/undefined');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>搭建React-Native项目并完美运行在虚拟机上</h1>
+                        <h2 class="subheading">React-Native项目</h2>
+                        <span class="meta">
+                            Posted by 吴云 on
+                            2019-01-09
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">行云</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">原点</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/读万卷书.html">逆旅</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">行囊</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">烙印</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>最近公司在准备一个 React-Native 的 App 项目，所以我就准备研究一下 React-Native,因为需要在安卓机上或者安卓虚拟机运行，就涉及到安装Android Studio等等，这玩意需要安装很多东西，初学者很难成功的将项目跑起来。也是为了记录一下自己鼓捣的过程，就写了这样一篇博客，教大家如何完美的将项目运行起来。</p>
+</blockquote>
+<blockquote>
+<p>本例以 macOS 操作系统作为开发平台，目标平台是 Android。</p>
+</blockquote>
+<h1><span id="安装依赖">安装依赖</span></h1>
+<p>首先安装必备的Node,并要求版本是 V8.3以上。本人通过 brew 命令行安装，你也可以去官网下载安装包自行安装。具体地址在<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">这里</a>。brew安装指令为：<br>
+<code>brew install node</code></p>
+<p>React-Native 需要 Java JDK，并且要求版本是1.8，版本不对的去<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">官网</a>下载安装。安装完成以后可以通过指令查看版本号是否正确：<br>
+<code>javac -version</code></p>
+<p>以上就是基本的依赖环境的安装。</p>
+<h1><span id="android-开发环境安装">Android 开发环境安装</span></h1>
+<p>Android 开发环境的安装是有些繁琐的，不过只要一步步的来，应该不会出现什么问题。首先我们需要安装  Android Studio，下载地址在<a href="https://developer.android.com/studio/" target="_blank" rel="noopener">这里</a>，注意，此处需要一些科学上网工具，不然是打不开页面的。</p>
+<p>下载完成以后点击安装，然后就一直 Next，如果你碰到这个页面，提示无法访问Android SDK，可以暂时不管，直接cancel。<br>
+<img src="https://purewy.github.io/img/android/android.png" alt="安装界面"></p>
+<p>弹出如下界面，直接next。<br>
+<img src="https://purewy.github.io/img/android/android1.png" alt="安装界面"></p>
+<p>等到这个界面，选择标准模式，点击Next:<br>
+<img src="https://purewy.github.io/img/android/android2.png" alt="安装界面"></p>
+<p>然后就是选择界面样式，根据喜好选择以后点击Next。<br>
+然后需要我们下载一堆组件，点击Next就会下载，等待下载完成以后就完成了Android Studio的安装。<br>
+<img src="https://purewy.github.io/img/android/android3.png" alt="安装界面"><br>
+<img src="https://purewy.github.io/img/android/android4.png" alt="安装界面"></p>
+<h2><span id="安装-android-sdk">安装 Android SDK</span></h2>
+<p>Android Studio 默认会安装最新版本的 Android SDK。目前编译 React Native 应用需要的是Android 8.1 (Oreo)版本的 SDK。你可以在Android Studio 的 SDK Manager 中选择安装各版本的 SDK。<br>
+你可以在 Android Studio 的欢迎界面中找到 SDK Manager。点击&quot;Configure&quot;，然后就能看到&quot;SDK Manager&quot;。<br>
+在 SDK Manager 中选择&quot;SDK Platforms&quot;选项卡，然后在右下角勾选&quot;Show Package Details&quot;。展开Android 8.1 (Oreo)选项，确保勾选了下面这些组件：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android SDK Platform 27</span><br><span class="line">Intel x86 Atom_64<span class="built_in"> System </span>Image</span><br></pre></td></tr></table></figure>
+<p>最后点击&quot;Apply&quot;来下载和安装这些组件。</p>
+<h2><span id="配置-android-环境变量">配置 Android 环境变量</span></h2>
+<p>打开命令行，输入以下指令：</p>
+<p><code>open .bash_profile</code></p>
+<p>然后在文件底部添加如下代码：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">ANDROID_HOME</span>=<span class="variable">$HOME</span>/Library/Android/sdk</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$ANDROID_HOME/tools</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$ANDROID_HOME/tools/bin</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$ANDROID_HOME/platform-tools</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$ANDROID_HOME/emulator</span><br></pre></td></tr></table></figure>
+<p>保存以后，输入以下指令：</p>
+<p><code>source .bash_profile</code></p>
+<p>这样环境变量就配置完成了。</p>
+<blockquote>
+<p>如果你不是通过Android Studio 安装的sdk，则其路径可能不同。</p>
+</blockquote>
+<h1><span id="创建-react-native-项目">创建 React-Native 项目</span></h1>
+<p>新建一个文件夹，cd 到这个文件夹中，输入以下指令：</p>
+<p><code>npm install -g react-native-cli</code></p>
+<p>然后创建项目：</p>
+<p><code>react-native init MyProject</code></p>
+<p>然后就会一直跑，等到项目中各种依赖安装完成，到此项目就创建成功了。</p>
+<h1><span id="让项目跑起来">让项目跑起来</span></h1>
+<h2><span id="在安卓真机上运行项目">在安卓真机上运行项目</span></h2>
+<blockquote>
+<p>首先保证你的手机已经打开开发者模式。</p>
+</blockquote>
+<p>通过 USB 将你的 Android 机链接到电脑上，保证打开开发者模式，然后执行下面的命令：</p>
+<p><code>react-native run-android</code></p>
+<p>这时应该会跑很久，但是不出意外会成功运行，这时候就可以在安卓机上看到你的项目了。不过这样并不方便调试，一旦你修改项目代码，并不能保证手机上的项目热更新，但是这种方法真实感更强。</p>
+<h2><span id="通过虚拟机运行项目">通过虚拟机运行项目</span></h2>
+<p>打开 Android Studio,随便新建一个项目，一直 Next，成功进入项目以后找到右上角的这个图标：<br>
+<img src="https://purewy.github.io/img/android/AndroidStudioAVD.png" alt="创建虚拟机"></p>
+<p>打开它，创建一个虚拟机。点击左下角的 Create Virtual Device,然后你会看到这个：<br>
+<img src="https://purewy.github.io/img/android/AndroidPhone.png" alt="创建虚拟机"><br>
+你可以根据自己电脑性能选择手机型号，分辨率越高需要的条件就越高。我是选择上面的默认型号，然后点击 Next，你会看到这个：<br>
+<img src="https://purewy.github.io/img/android/AndroidPhone1.png" alt="创建虚拟机"><br>
+请选择上面指示的版本下载，然后 Next，看到这个：<br>
+<img src="https://purewy.github.io/img/android/AndroidPhone2.png" alt="创建虚拟机"><br>
+到这里点击右下角的完成就可以了。虚拟机就创建成功了。</p>
+<p>然后双击你刚刚创建的虚拟机，就会看到仿真的手机在运行。这时候在你可以将你的项目放进你喜欢的编辑器内，然后运行下面的指令：</p>
+<p><code>react-native run-android</code></p>
+<p>不出意外你的项目就会在虚拟机上跑起来，是不是很有趣。</p>
+<h1><span id="保持项目热更新">保持项目热更新</span></h1>
+<p>在开发过程中我们需要一直调试你的项目，但是不能重复的跑项目，这样很浪费时间跟资源。所以我们可以这样做，打开你的虚拟机，在你的项目页面按下：cmd + m,会出来这样一个弹出框：<br>
+<img src="https://purewy.github.io/img/android/tankuang.png" alt="弹框"><br>
+点击红色指示线的按钮，这样就开启了热更新。</p>
+<p>到此为止这样一个 React-Native 项目就成功的在 安卓机或者 虚拟机上跑起来了。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/01/09/从无到有的Node-js-Vue-MongoDB前后端分离项目3/" data-toggle="tooltip" data-placement="top" title="从无到有的 Node+js+Vue+MongoDB 前后端分离项目(三)">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">安装依赖</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Android 开发环境安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">安装 Android SDK</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">配置 Android 环境变量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">创建 React-Native 项目</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">让项目跑起来</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">在安卓真机上运行项目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">通过虚拟机运行项目</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">保持项目热更新</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://njzyblog.cn" target="_blank">宁静致远</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "https://purewy.cn/2019/01/09/搭建React-Native项目并完美运行在虚拟机上/";
+    var disqus_url = "https://purewy.cn/2019/01/09/搭建React-Native项目并完美运行在虚拟机上/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+-    <!-- Footer -->
+-    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/PureWY">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 吴云 2019 
+                </p>
+                <p class="copyright text-muted">
+                    A blog site that records personal life
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://purewy.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://purewy.cn/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
