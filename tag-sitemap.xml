@@ -2,20 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://purewy.cn/tags/Site/</loc>
-        <lastmod>2019-01-09T08:25:39.649Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://purewy.cn/tags/Code/</loc>
-        <lastmod>2019-01-09T08:25:39.649Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://purewy.cn/tags/Tourism/</loc>
         <lastmod>2019-01-09T08:25:51.434Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,15 +9,29 @@
     </url>
 
     <url>
-        <loc>https://purewy.cn/tags/Blog/</loc>
+        <loc>https://purewy.cn/tags/Life/</loc>
         <lastmod>2019-01-09T08:55:30.688Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://purewy.cn/tags/Life/</loc>
-        <lastmod>2019-01-09T08:55:30.688Z</lastmod>
+        <loc>https://purewy.cn/tags/Site/</loc>
+        <lastmod>2019-01-09T09:04:32.870Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://purewy.cn/tags/Blog/</loc>
+        <lastmod>2019-01-09T09:04:32.870Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://purewy.cn/tags/Code/</loc>
+        <lastmod>2019-01-09T09:04:32.870Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
